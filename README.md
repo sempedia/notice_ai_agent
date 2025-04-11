@@ -90,5 +90,5 @@ This project is licensed under the terms of the MIT License.
 
 ## Author 
 
-## Alina Bazavan
-## Email: sempedia@gmail.com
+### Alina Bazavan
+### Email: sempedia@gmail.com
