@@ -48,6 +48,7 @@ To install the dependencies for this project, use **Poetry**:
 
 ```bash
 poetry install
+```
 
 Make sure you have a valid OpenAI API key and the necessary AWS credentials set up for deployment.
 
@@ -61,14 +62,15 @@ Validation Tests: Ensuring correct handling of edge cases like missing fields or
 Numeric and Text Validations: Ensuring the agent handles invalid numeric inputs and extra spaces in text fields.
 
 To run the tests, use:
-```
+
+```bash
 pytest --cov=chains --cov-report=term-missing
 ```
 
 ## Test Coverage
 To generate a test coverage report, you can use pytest-cov with the following command:
 
-```
+```bash
 pytest --cov=chains --cov-report=htmlcov
 ```
 
@@ -87,5 +89,6 @@ Scaling the solution using AWS Lambda and AWS SQS for handling large volumes of 
 This project is licensed under the terms of the MIT License.
 
 ## Author 
-#Alina Bazavan
-#Email: sempedia@gmail.com
+
+# Alina Bazavan
+# Email: sempedia@gmail.com
