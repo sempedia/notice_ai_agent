@@ -1,0 +1,92 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Poetry
+.poetry/
+poetry.lock
+pyproject.toml
+
+# Virtual environments
+.venv/
+venv/
+env/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3
+media/
+static/
+
+# Docker
+# Docker-related files
+.docker/
+docker-compose.override.yml
+*.dockerfile
+
+# AWS
+# AWS deployment files (you might customize this if you use more specific AWS services)
+.aws/
+*.pem
+*.key
+*.cert
+
+# LangChain/LangGraph
+# Ignore LangChain and LangGraph generated files
+*.llm
+*.model
+langchain/
+langgraph/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# pytest
+.cache/
+*.cover
+*.coverage
+*.hypothesis/
+.coverage.*
+
+# IDE files
+.idea/
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# CSV, Excel, and other data files
+*.csv
+*.xlsx
+*.xls
+*.txt
+*.pdf
+*.avif
+
+# JSON files:
+*.json
+
+# Swap files
+*.swp
+
+# Backup files
+*.bak
+*.tmp
