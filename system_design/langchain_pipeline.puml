@@ -1,0 +1,46 @@
+@startuml
+actor User
+User -> (info_parse_prompt) : Provides raw email
+note bottom of (info_parse_prompt)
+    The User represents the sender
+    of the raw email message, typically
+    a regulatory notice from a
+    government or another organization.
+end note
+
+(info_parse_prompt) -> (notice_parser_model) : Structured query
+note bottom of (info_parse_prompt)
+    info_parse_prompt is a template
+    that instructs the LLM on how
+    to parse the raw email, extracting
+    fields such as entity name, 
+    violation type, and compliance deadlines.
+end note
+
+(notice_parser_model) -> (NoticeEmailExtract) : Structured output
+note bottom of (notice_parser_model)
+    The output from info_parse_prompt
+    is passed to the notice_parser_model,
+    a GPT model that processes the structured
+    query and extracts the required data 
+    (e.g., entity name, project ID, violation).
+end note
+
+note bottom of (NoticeEmailExtract)
+    The model's output is converted into
+    a structured format based on the schema
+    defined in the NoticeEmailExtract class.
+    This structured data contains the fields
+    extracted from the raw email message.
+end note
+
+note bottom of (NoticeEmailExtract)
+    The final structured output includes
+    fields such as entity_name, date_of_notice,
+    project_id, violation_type, compliance_deadline,
+    and more. These are ready for use in the system
+    (e.g., triggering notifications or storing
+    in the database).
+end note
+
+@enduml
