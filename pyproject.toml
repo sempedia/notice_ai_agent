@@ -1,0 +1,80 @@
+[tool.poetry]
+name = "lang_graph_project"
+version = "0.1.0"
+description = "This is a LangGraph AI Agent"
+authors = ["sempedia <sempedia@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+# The 'packages' key specifies where Poetry will look for your package
+packages = [
+    { include = "langgraph/chains" },
+    { include = "scripts" },
+    { include = "tests" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+langgraph = ">=0.3.27,<0.4.0"
+langchain-openai = ">=0.3.12,<0.4.0"
+pydantic = { version = ">=2.11.3,<3.0.0", extras = ["email"] }
+langchain-core = "^0.3.51"
+pydantic-settings = "^2.8.1"
+tenacity = "^9.1.2"
+pytest = "^8.3.5"
+ruff = "^0.11.5"
+openai = "^1.75.0"
+
+
+
+
+
+[tool.poetry.group.dev.dependencies]
+# These should only contain development tools
+pre-commit = "^4.2.0"
+isort = "^6.0.1"
+black = "^25.1.0"
+pytest = "^8.3.5"
+mypy = "^1.15.0"
+ruff = "^0.11.5"
+flake8 = "^7.2.0"
+
+
+
+[tool.poetry.scripts]
+ensure-init = "scripts.add_init_files:ensure_init_files"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 150
+target-version = ['py313']
+
+
+[tool.isort]
+profile = "black"
+line_length = 150
+multi_line_output = 3
+include_trailing_comma = true
+known_first_party = ["chains", "config", "scripts"]
+skip_gitignore = false
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 150
+exclude = ".venv/*"
+ignore = ["E203", "W503", "F403", "F405", "E128", "E302", "E301" , "E405", "E265"]
+select = ["E", "F"]
+
+[tool.ruff]
+line-length = 150
+ignore = ["E501"]
+exclude = ["tests/*", "migrations/*"]
+select = ["E", "F"]

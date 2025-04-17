@@ -13,7 +13,7 @@ note bottom of (info_parse_prompt)
     info_parse_prompt is a template
     that instructs the LLM on how
     to parse the raw email, extracting
-    fields such as entity name, 
+    fields such as entity name,
     violation type, and compliance deadlines.
 end note
 
@@ -22,7 +22,7 @@ note bottom of (notice_parser_model)
     The output from info_parse_prompt
     is passed to the notice_parser_model,
     a GPT model that processes the structured
-    query and extracts the required data 
+    query and extracts the required data
     (e.g., entity name, project ID, violation).
 end note
 

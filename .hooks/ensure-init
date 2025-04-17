@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e pipefail
+
+echo "🔍 Ensuring all Python packages have __init__.py..."
+
+# Use poetry to run script, ensures correct virtualenv
+poetry run python scripts/add_init_files.py
+
+# Auto-stage any new __init__.py files
+git ls-files --others --exclude-standard | grep '__init__.py' | xargs -r git add

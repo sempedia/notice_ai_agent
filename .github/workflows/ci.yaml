@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker-build:
+    name: Build, Test, Lint, and Pre-Commit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker build -f docker/Dockerfile -t langgraph .
+
+      # Install dependencies and run checks
+      - name: Run local checks inside Docker
+        run: |
+          docker run --rm -v $(pwd):/app -w /app langgraph make format-local
+          docker run --rm -v $(pwd):/app -w /app langgraph make lint-local
+          docker run --rm -v $(pwd):/app -w /app langgraph make test-local
+          docker run --rm -v $(pwd):/app -w /app langgraph make check-local
+
+      # Build the Docker image for testing
+      - name: Build Docker image for testing
+        run: docker buildx build --no-cache -f docker/Dockerfile -t langgraph .
+
+      # Run tests inside Docker
+      - name: Run tests
+        run: docker run --rm -e PYTHONPATH=/app langgraph poetry run pytest --maxfail=1 --disable-warnings -q
+
+      # Run linters inside Docker
+      - name: Run linters
+        run: |
+          docker run --rm langgraph poetry run black --check .
+          docker run --rm langgraph poetry run isort --check-only .
+          docker run --rm langgraph poetry run flake8 .
+          docker run --rm langgraph poetry run mypy .
+
+      # Run pre-commit checks inside Docker
+      - name: Run pre-commit checks
+        run: docker run --rm langgraph poetry run pre-commit run --all-files --show-diff-on-failure

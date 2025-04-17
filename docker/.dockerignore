@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+*.log
+*.sqlite3
+.venv/
+poetry.lock
+tests/__pycache__/

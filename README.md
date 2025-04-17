@@ -1,3 +1,5 @@
+![CI](https://github.com/sempedia/notice_ai_agent/actions/workflows/ci.yml/badge.svg)
+
 
 # NoticeAI - AI Agent for Email Extraction
 
@@ -88,7 +90,7 @@ Scaling the solution using AWS Lambda and AWS SQS for handling large volumes of 
 ## License
 This project is licensed under the terms of the MIT License.
 
-## Author 
+## Author
 
 ### Alina Bazavan
 ### Email: sempedia@gmail.com

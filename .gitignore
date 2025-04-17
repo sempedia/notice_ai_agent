@@ -10,10 +10,13 @@ dist/
 build/
 pip-wheel-metadata/
 
-# Poetry
+# Docker-related files
+.docker/
+docker-compose.override.yml
+
+# Poetry virtual environment directory
 .poetry/
-poetry.lock
-pyproject.toml
+
 
 # Virtual environments
 .venv/
@@ -32,11 +35,6 @@ db.sqlite3
 media/
 static/
 
-# Docker
-# Docker-related files
-.docker/
-docker-compose.override.yml
-*.dockerfile
 
 # AWS
 # AWS deployment files (you might customize this if you use more specific AWS services)
@@ -61,6 +59,11 @@ langgraph/
 *.coverage
 *.hypothesis/
 .coverage.*
+
+# Coverage reports
+.htmlcov/
+
+
 
 # IDE files
 .idea/
